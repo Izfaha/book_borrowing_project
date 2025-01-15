@@ -65,7 +65,7 @@ void inputBookData(dataLib dataInfo[], int &count)
     cout << "Nama Author buku: ";
     getline(cin, dataInfo[count].bookAuthor);
     cin.ignore();
-    cout << "Tahun publish buku:";
+    cout << "Tahun publish buku: ";
     cin >> dataInfo[count].bookPublish;
     cout << "Jumlah Buku: ";
     cin >> dataInfo[count].amountOfBook;
@@ -102,31 +102,34 @@ void inputBookData(dataLib dataInfo[], int &count)
     // IDR currency problem in misscalculation
     string changeToIDRFormat = formatIDRCurrency(dataInfo[count].priceBookTotal); // altering = changing to IDR or Indonesian Rupiah
     cout << "Yang harus anda bayarkan adalah " << changeToIDRFormat << endl;
+    cout << "====================================================================================\n";
+    cout << endl;
 
     count++;
 }
 
 string outputDataFromInput(dataLib dataInfo[], int count)
 {
-    cout << "==========DATA PEMBELI BUKU=========\n";
+    cout << "=============================================DATA PEMBELI BUKU============================================\n";
     cout << left;
     cout << "Nama Peminjam\t|"
          << "Judul Buku\t|"
          << "Nama Author buku\t|"
          << "Tahun Publish buku\t|"
          << "Jumlah buku\t|"
-         << "Harga per Buku\t|\n";
-    cout << "====================================\n";
-    
+         << "Harga per Buku\t|"
+         << "Total Bayar\t|\n";
+    cout << "==========================================================================================================\n";
+
     for (int i = 0; i < count; i++)
     {
-        cout << dataInfo[i].buyerName << "\t|"
-             << dataInfo[i].bookTitle << "\t|"
-             << dataInfo[i].bookAuthor << "\t|"
-             << dataInfo[i].bookPublish << "\t|"
-             << dataInfo[i].amountOfBook << "\t|"
-             << dataInfo[i].perBookPrice << "\t|"
-             << dataInfo[i].priceBookTotal << "\t|";
+        cout << dataInfo[i].buyerName << "\t\t|";
+        cout << dataInfo[i].bookTitle << "\t\t|";
+        cout << dataInfo[i].bookAuthor << "\t\t\t|";
+        cout << dataInfo[i].bookPublish << "\t\t\t|";
+        cout << dataInfo[i].amountOfBook << "\t\t|";
+        cout << dataInfo[i].perBookPrice << "\t\t|";
+        cout << dataInfo[i].priceBookTotal << "\t|";
     }
     return "Output Completed\n";
 }
