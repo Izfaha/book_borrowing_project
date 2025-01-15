@@ -58,13 +58,13 @@ void inputBookData(dataLib dataInfo[], int &count)
 {
     cout << "Masukan Nama: ";
     getline(cin, dataInfo[count].buyerName);
-    cin.ignore(100, '\n');
+    cin.ignore();
     cout << "Judul buku: ";
     getline(cin, dataInfo[count].bookTitle);
-    cin.ignore(100, '\n');
+    cin.ignore();
     cout << "Nama Author buku: ";
     getline(cin, dataInfo[count].bookAuthor);
-    cin.ignore(100, '\n');
+    cin.ignore();
     cout << "Tahun publish buku:";
     cin >> dataInfo[count].bookPublish;
     cout << "Jumlah Buku: ";
@@ -108,12 +108,25 @@ void inputBookData(dataLib dataInfo[], int &count)
 
 string outputDataFromInput(dataLib dataInfo[], int count)
 {
+    cout << "==========DATA PEMBELI BUKU=========\n";
     cout << left;
     cout << "Nama Peminjam\t|"
          << "Judul Buku\t|"
          << "Nama Author buku\t|"
          << "Tahun Publish buku\t|"
          << "Jumlah buku\t|"
-         << "Harga per Buku\t|";
+         << "Harga per Buku\t|\n";
+    cout << "====================================\n";
+    
+    for (int i = 0; i < count; i++)
+    {
+        cout << dataInfo[i].buyerName << "\t|"
+             << dataInfo[i].bookTitle << "\t|"
+             << dataInfo[i].bookAuthor << "\t|"
+             << dataInfo[i].bookPublish << "\t|"
+             << dataInfo[i].amountOfBook << "\t|"
+             << dataInfo[i].perBookPrice << "\t|"
+             << dataInfo[i].priceBookTotal << "\t|";
+    }
     return "Output Completed\n";
 }
