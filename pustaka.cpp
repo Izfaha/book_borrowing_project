@@ -58,13 +58,13 @@ void inputBookData(dataLib dataInfo[], int &count)
 {
     cout << "Masukan Nama: ";
     getline(cin, dataInfo[count].buyerName);
-    cin.ignore();
+    //cin.ignore();
     cout << "Judul buku: ";
     getline(cin, dataInfo[count].bookTitle);
-    cin.ignore();
+    //cin.ignore();
     cout << "Nama Author buku: ";
     getline(cin, dataInfo[count].bookAuthor);
-    cin.ignore();
+    //cin.ignore();
     cout << "Tahun publish buku: ";
     cin >> dataInfo[count].bookPublish;
     cout << "Jumlah Buku: ";
@@ -110,7 +110,7 @@ void inputBookData(dataLib dataInfo[], int &count)
 
 string outputDataFromInput(dataLib dataInfo[], int count)
 {
-    cout << "=============================================DATA PEMBELI BUKU============================================\n";
+    cout << "========================================================DATA PEMBELI BUKU========================================================\n";
     cout << left;
     cout << "Nama Peminjam\t|"
          << "Judul Buku\t|"
@@ -119,7 +119,7 @@ string outputDataFromInput(dataLib dataInfo[], int count)
          << "Jumlah buku\t|"
          << "Harga per Buku\t|"
          << "Total Bayar\t|\n";
-    cout << "==========================================================================================================\n";
+    cout << "=================================================================================================================================\n";
 
     for (int i = 0; i < count; i++)
     {
@@ -129,7 +129,12 @@ string outputDataFromInput(dataLib dataInfo[], int count)
         cout << dataInfo[i].bookPublish << "\t\t\t|";
         cout << dataInfo[i].amountOfBook << "\t\t|";
         cout << dataInfo[i].perBookPrice << "\t\t|";
-        cout << dataInfo[i].priceBookTotal << "\t|";
+        cout << dataInfo[i].priceBookTotal << "\t|\n";
     }
+    cout << "=================================================================================================================================\n";
     return "Output Completed\n";
+}
+
+string updateData(dataLib dataInfo[], int count){
+    return 0;
 }
