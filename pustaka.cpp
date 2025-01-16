@@ -135,8 +135,15 @@ string outputDataFromInput(dataLib dataInfo[], int count)
     return "Output Completed\n";
 }
 
-string updateData(dataLib dataInfo[], int count){
-    cout << "Update Data";
-    
-    return 0;
+void updateData(dataLib dataInfo[], int count, char answer){
+    cout << "============================================================Update Book Data=======================================================\n";
+    cout << "Apakah anda ingin mengupdate data? (Y/n)"; cin >> answer;
+    if(answer == 'Y' || answer == 'y'){
+        void inputBookData(dataLib[], int &count);
+    } else if(answer == 'N' || answer == 'n'){
+        return;
+    } else {
+        cout << "Option not found!\n";
+    }
+    cout << "===================================================================================================================================\n";
 }
