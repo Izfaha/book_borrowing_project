@@ -136,5 +136,7 @@ string outputDataFromInput(dataLib dataInfo[], int count)
 }
 
 string updateData(dataLib dataInfo[], int count){
+    cout << "Update Data";
+    
     return 0;
 }
