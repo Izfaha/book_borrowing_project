@@ -58,19 +58,20 @@ void inputBookData(dataLib dataInfo[], int &count)
 {
     cout << "Masukan Nama: ";
     getline(cin, dataInfo[count].buyerName);
-    //cin.ignore();
+    // cin.ignore();
     cout << "Judul buku: ";
     getline(cin, dataInfo[count].bookTitle);
-    //cin.ignore();
+    // cin.ignore();
     cout << "Nama Author buku: ";
     getline(cin, dataInfo[count].bookAuthor);
-    //cin.ignore();
+    // cin.ignore();
     cout << "Tahun publish buku: ";
     cin >> dataInfo[count].bookPublish;
     cout << "Jumlah Buku: ";
     cin >> dataInfo[count].amountOfBook;
     cout << "Harga per/Buku: ";
     cin >> dataInfo[count].perBookPrice;
+    cin.ignore();
 
     // number discount user costing over 10 book
     /*
@@ -78,13 +79,15 @@ void inputBookData(dataLib dataInfo[], int &count)
     book > 3 disc 5%
     book > 6 disc 10%
     */
+    double totalPrice = dataInfo[count].perBookPrice * dataInfo[count].amountOfBook;
+
     if (dataInfo[count].amountOfBook > 3 && dataInfo[count].amountOfBook <= 5)
     {
         /*
         Diskon 5% with formula total price = (price per book x number of book) - discount
         */
         cout << "You get discount 5%\n";
-        dataInfo[count].priceBookTotal = (dataInfo[count].perBookPrice * dataInfo[count].amountOfBook) - 0.05;
+        totalPrice *= 0.95; // 5%
     }
     else if (dataInfo[count].amountOfBook > 6)
     {
@@ -92,16 +95,15 @@ void inputBookData(dataLib dataInfo[], int &count)
         Diskon 10% with formula total price = (price per book x number of book) - discount
         */
         cout << "You get discount 10%\n";
-        dataInfo[count].priceBookTotal = (dataInfo[count].perBookPrice * dataInfo[count].amountOfBook) - 0.10;
+        totalPrice *= 0.90; // 10%
     }
     else
     {
-        cout << "You don't get discount!\n";
-        dataInfo[count].priceBookTotal = dataInfo[count].perBookPrice * dataInfo[count].amountOfBook;
+        cout << "No discount applied\n";
     }
-    // IDR currency problem in misscalculation
-    string changeToIDRFormat = formatIDRCurrency(dataInfo[count].priceBookTotal); // altering = changing to IDR or Indonesian Rupiah
-    cout << "Yang harus anda bayarkan adalah " << changeToIDRFormat << endl;
+
+    dataInfo[count].priceBookTotal = totalPrice;
+    cout << "Yang harus anda bayarkan adalah " << formatIDRCurrency(totalPrice) << endl; // altering = changing to IDR or Indonesian Rupiah
     cout << "====================================================================================\n";
     cout << endl;
 
@@ -111,39 +113,43 @@ void inputBookData(dataLib dataInfo[], int &count)
 string outputDataFromInput(dataLib dataInfo[], int count)
 {
     cout << "========================================================DATA PEMBELI BUKU========================================================\n";
-    cout << left;
-    cout << "Nama Peminjam\t|"
-         << "Judul Buku\t|"
-         << "Nama Author buku\t|"
-         << "Tahun Publish buku\t|"
-         << "Jumlah buku\t|"
-         << "Harga per Buku\t|"
-         << "Total Bayar\t|\n";
+    cout << left << setw(20) << "Nama Peminjam" << "|"
+         << setw(20) << "Judul Buku" << "|"
+         << setw(20) << "Nama Author buku" << "|"
+         << setw(10) << "Tahun Publish buku" << "|"
+         << setw(10) << "Jumlah buku" << "|"
+         << setw(15) << "Harga per Buku" << "|"
+         << setw(15) << "Total Bayar" << "|\n";
     cout << "=================================================================================================================================\n";
 
     for (int i = 0; i < count; i++)
     {
-        cout << dataInfo[i].buyerName << "\t\t|";
-        cout << dataInfo[i].bookTitle << "\t\t|";
-        cout << dataInfo[i].bookAuthor << "\t\t\t|";
-        cout << dataInfo[i].bookPublish << "\t\t\t|";
-        cout << dataInfo[i].amountOfBook << "\t\t|";
-        cout << dataInfo[i].perBookPrice << "\t\t|";
-        cout << dataInfo[i].priceBookTotal << "\t|\n";
+        cout << left << setw(20) << dataInfo[i].buyerName
+             << "|" << setw(20) << dataInfo[i].bookTitle
+             << "|" << setw(20) << dataInfo[i].bookAuthor
+             << "|" << setw(10) << dataInfo[i].bookPublish
+             << "|" << setw(10) << dataInfo[i].amountOfBook
+             << "|" << setw(15) << formatIDRCurrency(dataInfo[i].perBookPrice)
+             << "|" << setw(15) << formatIDRCurrency(dataInfo[i].priceBookTotal) << "|\n";
     }
     cout << "=================================================================================================================================\n";
     return "Output Completed\n";
 }
 
-void updateData(dataLib dataInfo[], int count, char answer){
+void updateData(dataLib dataInfo[], int count)
+{
     cout << "============================================================Update Book Data=======================================================\n";
-    cout << "Apakah anda ingin mengupdate data? (Y/n)"; cin >> answer;
-    if(answer == 'Y' || answer == 'y'){
-        void inputBookData(dataLib[], int &count);
-    } else if(answer == 'N' || answer == 'n'){
+    cout << "Masukan index data yang ingin diubah (1 - " << count << "): ";
+    int index;
+    cin >> index;
+    if (index < 1 || index > count)
+    {
+        cout << "Index tidak valid.\n";
         return;
-    } else {
-        cout << "Option not found!\n";
     }
+    
+    index --;
+    cout << "Mengubah data untuk: " << dataInfo[index].buyerName << endl;
+    inputBookData(dataInfo, index);
     cout << "===================================================================================================================================\n";
 }

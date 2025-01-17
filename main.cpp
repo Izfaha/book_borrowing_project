@@ -17,23 +17,24 @@ int main()
         cout << "Pilih Menu [1/2/3/4]: ";
         int choice;
         cin >> choice;
+        cin.ignore();
 
-        if (choice == 1)
-        {
-            inputBookData(information, iteration); // in this function . "information[]" = is incorrect
-            cout << endl;
-        } else if (choice == 2){
-            outputDataFromInput(information, iteration);
-            cout << endl;
-        } else if (choice == 3){
-            char answer;
-            updateData(information, iteration, answer);
-            cout << endl;
-        } else if (choice == 4){
-            break;
-        } else {
-            cout << "Option is not falid\n";
+        switch (choice) {
+            case 1:
+                inputBookData(information, iteration);
+                break;
+            case 2:
+                outputDataFromInput(information, iteration);
+                break;
+            case 3:
+                updateData(information, iteration);
+                break;
+            case 4:
+                return 0;
+            default:
+                cout << "Option is not valid\n";
         }
+        cout << endl;
     }
     return 0;
 }

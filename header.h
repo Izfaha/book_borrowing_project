@@ -19,4 +19,4 @@ enum Position{LEFT, CENTRE, RIGHT};
 void headerScript();
 void inputBookData(dataLib[], int &count);
 string outputDataFromInput(dataLib dataInfo[], int cout);
-void updateData(dataLib dataInfo[], int count, char answer);
+void updateData(dataLib dataInfo[], int count);
