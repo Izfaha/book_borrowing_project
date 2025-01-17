@@ -11,7 +11,8 @@ The program has 4 option, it is
 
 Each option is encapsulated within a dedicated function, with each function receiving multiple parameters.
 
-> 1. Input Data 
+> 1. Input Data
+
 this requires a user to type text, number and some special character if needed, such as Name's buyer ```(string)```, Book Title ```(string)```, The name of book author ```(string)```, Book Publish ```(integer)```, number of book ```(integer)```, Price per Book ```(integer)```.
 
 Within the function, a conditional statement is implemented to apply a 5% discount if the user purchases between 3 and 5 books. For purchases exceeding 6 books, a 10% discount is allocated.
