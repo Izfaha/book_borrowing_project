@@ -1,4 +1,5 @@
 # Book Borrowing Project
+> [!NOTE]
 > this is a simple project to enhace my c++ coding ability
 
 ## Build-in Functions
