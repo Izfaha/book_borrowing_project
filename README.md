@@ -36,14 +36,36 @@ void aligmentPosition(const string text, int width, const string str);
 ```
 This function is for giving fix position of the given-text in the title of program.
 
+Honestly, I establish a condition to align the position automatically by simply inputting a command like "left," ensuring it adjusts seamlessly to the specified alignment.
+
 - Second Function is :
 ```
 void headerScript();
 ```
 Function for giving the title of the program.
 
+In this function, I utilize the ```void alignmentPosition(const string text, int width, const string str);``` method to refine the header script.
+
 - Third Function is :
 ```
 string formatIDRCurrency(double idr);
 ```
-Setting the format from user to IDR or Indonesian Rupiah (Rp. ). For instance, if a user gives an input number like 2000, it'll be printed by Rp. 2,000.00. 
+The format is adjusted to IDR, representing Indonesian Rupiah (Rp). For example, when a user inputs a numerical value such as 2000, it will be formatted and displayed as Rp 2,000.00. 
+
+- Fourth Function is :
+```
+void inputBookData(dataLib dataInfo[], int &count);
+```
+The function will ask for the user to answer all of the available queries. 
+
+- Fith Function is :
+```
+string outputDataFromInput(dataLib dataInfo[], int count);
+```
+This function print the output of the input user.
+
+- Sixth Function is :
+```
+void updateData(dataLib dataInfo[], int count);
+```
+This will update the past user input into a newer data.
